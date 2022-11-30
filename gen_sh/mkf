@@ -1,0 +1,30 @@
+#!/bin/bash
+FILE_NAME=$1
+
+if [ -z "$FILE_NAME" ]
+then
+        echo "File empty"
+        return 1
+fi
+
+PROG_FILE="${FILE_NAME}.cc"
+
+if test -f "$PROG_FILE"; then
+        echo "File $PROG_FILE exist."
+        return 1
+fi
+
+NOW=$(date "+%Y.%m.%d %T")
+echo "/**
+ *\tauthor:   stein
+ *\tcreated:  $NOW
+**/
+#include <bits/stdc++.h>
+int main() {
+\tstd::ios::sync_with_stdio(false);
+\tstd::cin.tie(nullptr);
+\treturn 0;
+}" > $PROG_FILE
+
+
+echo "Created $PROG_FILE at $NOW"

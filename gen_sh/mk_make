@@ -1,0 +1,29 @@
+#!/bin/bash
+FILE_NAME=$1
+
+if [ -z "$FILE_NAME" ]
+then
+        echo "File empty"
+        return
+fi
+
+
+touch Makefile
+
+echo "# MakeFile
+all:
+\tg++ -std=c++17 -o sol $FILE_NAME.cc
+
+runb: all run
+
+run:
+\t./sol < in.txt
+
+runc:
+\t./sol
+
+clean:
+\trm sol
+" > Makefile
+
+echo "created Makefile"
